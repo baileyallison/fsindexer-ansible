@@ -1,4 +1,4 @@
 - hosts: indexers
   roles:
-  - role: elasticseach
+  - role: elasticsearch
   - role: fs2es-indexer

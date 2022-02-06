@@ -1,0 +1,5 @@
+- include: install-elasticsearch/install-elasticsearch.yml
+
+- include: configure-repo/configure-repo.yml
+
+- include: configure-elasticsearch/configure-elasticsearch.yml

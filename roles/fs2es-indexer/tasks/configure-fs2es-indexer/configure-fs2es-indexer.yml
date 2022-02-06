@@ -1,0 +1,18 @@
+- name: run fs2es-indexer setup script
+ansible.builtin.script: /etc/fs2es-indexer/setup.py
+args:
+  executable: python3
+
+- name: write fs2es-indexer config file
+  template:
+    src: config.yml.j2
+    dest: /etc/fs2es-indexer/config.yml
+    owner: "root"
+  notify: service handler
+
+- name: start fs2es-indexer systemd service
+ansible.builtin.systemd:
+  name: fsindexer.service
+  enabled: yes
+  # daemon_reload: yes ## optional?
+  state: started

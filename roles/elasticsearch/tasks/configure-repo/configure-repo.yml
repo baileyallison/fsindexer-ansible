@@ -1,0 +1,15 @@
+- name: install rpm gpg 
+  ansible.builtin.rpm_key:
+    state: present
+    key: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+
+- name: configure yum repository
+  yum_repository:
+    name: elasticsearch
+    description: Elasticsearch repository for 7.x packages
+    baseurl: https://artifacts.elastic.co/packages/7.x/yum
+    gpgcheck: yes
+    gpgkey: https://artifacts.elastic.co/packages/7.x/yum
+    enabled: no
+    # autorefresh: 1 -- not needed
+    # type: rpm-md -- not needed
