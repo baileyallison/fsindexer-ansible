@@ -5,7 +5,7 @@
     daemon_reload: yes
 
 
-- name: start elasticsearch systemd service
+- name: start systemd service
   ansible.builtin.systemd:
     name: elasticsearch.service
     state: started

@@ -1,0 +1,12 @@
+[Unit]
+Description=fs2es-indexer
+After=elasticsearch.service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/fs2es-indexer daemon
+Restart=on-abnormal
+
+[Install]
+WantedBy=multi-user.target

@@ -1,22 +1,31 @@
-- name: run fs2es-indexer setup script
-  ansible.builtin.script: /etc/fs2es-indexer/setup.py install
+- name: run setup script
+  ansible.builtin.shell: python3 setup.py install
   args:
-    executable: python3
+    chdir: /etc/fs2es-indexer/
 
-- name: write fs2es-indexer config file
+- name: write config file
   template:
     src: config.yml.j2
     dest: /etc/fs2es-indexer/config.yml
     owner: "root"
   notify: service handler
 
-- name: enable fs2es-indexer systemd service
+- name: configure systemd service
+  template:
+    src: fs2es-indexer.service.j2
+    dest: "/etc/systemd/system/fs2es-indexer.service"
+    owner: root
+    group: root
+    mode: 0644
+  notify: service handler
+
+- name: enable systemd service
   ansible.builtin.systemd:
-    name: fsindexer.service
+    name: fs2es-indexer.service
     enabled: yes
     state: started
 
-- name: start fs2es-indexer systemd service
+- name: start systemd service
   ansible.builtin.systemd:
-    name: fsindexer.service
+    name: fs2es-indexer.service
     state: started

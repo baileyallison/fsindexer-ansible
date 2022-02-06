@@ -1,0 +1,7 @@
+- name: stop fs2es systemd
+
+- name: purge fs2es 
+
+- name: stop elasticsearch systemd
+
+- name: purge elasticsearch
