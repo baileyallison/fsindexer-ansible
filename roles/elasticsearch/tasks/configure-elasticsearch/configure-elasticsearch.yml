@@ -1,6 +1,11 @@
+- name: enable systemd service
+  ansible.builtin.systemd:
+    name: elasticsearch.service
+    enabled: yes
+    daemon_reload: yes
+
+
 - name: start elasticsearch systemd service
-ansible.builtin.systemd:
-  name: elasticsearch.service
-  enabled: yes
-  daemon_reload: yes ## optional?
-  state: started
+  ansible.builtin.systemd:
+    name: elasticsearch.service
+    state: started

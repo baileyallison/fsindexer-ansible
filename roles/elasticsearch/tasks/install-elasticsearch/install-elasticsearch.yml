@@ -1,5 +1,5 @@
-- name: install elasticsearch
-dnf:
+- name: install package elasticsearch
+  dnf:
     name: elasticsearch
     state: present
     enablerepo: elasticsearch

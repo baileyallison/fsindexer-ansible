@@ -1,4 +1,4 @@
 - name: clone git repo to /etc/fs2es-indexer/
-ansible.builtin.git:
-  repo: 'https://github.com/Ellerhold/fs2es-indexer.git'
-  dest: /etc/fs2es-indexer
+  ansible.builtin.git:
+    repo: 'https://github.com/Ellerhold/fs2es-indexer.git'
+    dest: /etc/fs2es-indexer
