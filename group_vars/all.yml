@@ -1,0 +1,16 @@
+#### smb_share_paths
+samba_shares:
+    - /path/to/share
+    - /path/to/share
+
+#### fs2es-indexer settings for elasticsearch
+  - url: "http:localhost:9200"
+  - index: "files"
+  - bulk_size: 10000
+  #- elasticsearch-username: fs2es-indexer
+  #- elasticsearch-password: p@ssw0rd
+
+#### fs2es-indexer wait time between indexing
+# The wait time between indexing runs
+# Allowed suffixes: s (seconds), m (minutes), h (hours), d (days)
+  - wait_time: "30m"
