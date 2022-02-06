@@ -1,4 +1,4 @@
-- name: install package elasticsearch
+- name: install packages
   dnf:
     name: elasticsearch
     state: present
