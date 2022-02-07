@@ -7,7 +7,7 @@ directories:
 
 ####Elasticsearch configuration options
 
-elasticsearch:
+{{ 'elasticsearch:' }}
 ##The URL of the elasticsearch index
   url: "{{ url }}"
 ## The name of the elasticsearch index
@@ -22,24 +22,3 @@ elasticsearch:
 ####The wait time between indexing runs
 ##Allowed suffixes: s (seconds), m (minutes), h (hours), d (days)
 wait_time: "{{ wait_time }}"
-
-
-
-
-# TODO DS-Store ausschließen
-# TODO Papierkorb
-
-# (Optionals) Exclude directories / files from the index
-#exclusions:
-  # Exclusion via a simple string search in the full path of the file / directory.
-  # If any of the given strings are found in the full path, it wont be added to the index.
-  # Usually faster than a regular expression!
-#  partial_paths:
-#    - ".DS_Store"
-#    - "._.DS_Store"
-
-  # Exclusion via testing if a regular expression matches the full path of the file / directory.
-  # If any of the regular expression matches, it wont be added to the index.
-  # Usually slower than using a simple string search.
-#  regular_expressions:
-#    - "\.Trash-\d+"
