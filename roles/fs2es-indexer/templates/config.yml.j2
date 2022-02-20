@@ -6,8 +6,9 @@ directories:
 {% endfor %}
 
 ####Elasticsearch configuration options
-
-{{ 'elasticsearch:' }}
+{% raw %}
+elasticsearch:
+{& endraw %}
 ##The URL of the elasticsearch index
   url: "{{ url }}"
 ## The name of the elasticsearch index
