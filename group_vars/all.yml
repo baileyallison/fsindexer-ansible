@@ -4,7 +4,7 @@ samba_shares:
     - /path/to/share
 
 #### fs2es-indexer settings for elasticsearch
-url: http:localhost:9200
+url: http://localhost:9200
 index: files
 bulk_size: 10000
 #elasticsearch-username: fs2es-indexer

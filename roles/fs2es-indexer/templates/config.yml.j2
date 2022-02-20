@@ -6,20 +6,19 @@ directories:
 {% endfor %}
 
 ####Elasticsearch configuration options
-{% raw %}
 elasticsearch:
-{& endraw %}
 ##The URL of the elasticsearch index
   url: "{{ url }}"
 ## The name of the elasticsearch index
   index: "{{ index }}"
 ## The amount of records to insert in one go (bulk)
-  bulk_size: {{ bulk_size }}
+  bulk_size: "{{ bulk_size }}"
+{% if elasticsearch_username is defined and elasticsearch_password is defined %}
 ##(Optional): The user for elasticsearch
-#  user: {{ elasticsearch-username }}
+  user: {{ elasticsearch_username }}
 ##(Optional): The password for elasticsearch
-#  password: {{ elasticsearch-password }}
-
+  password: {{ elasticsearch_password }}
+{% endif %}
 ####The wait time between indexing runs
 ##Allowed suffixes: s (seconds), m (minutes), h (hours), d (days)
 wait_time: "{{ wait_time }}"
