@@ -8,4 +8,4 @@
     enabled: true
     state: restarted
   with_items:
-    - 'fsindexer'
+    - 'fs2esindexer'
