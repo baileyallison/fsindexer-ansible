@@ -1,31 +1,60 @@
-- name: stop fs2es systemd service
-  ansible.builtin.systemd:
-    name: fs2es-indexer.service
-    state: stopped
+- name: confirm whether user really meant to purge the cluster
+  hosts: localhost
+  gather_facts: false
 
-- name: purge fs2es config directory
-  ansible.builtin.shell: rm -rf /etc/fs2es-indexer
+  vars_prompt:
+    - name: ireallymeanit
+      prompt: Are you sure you want to purge the cluster?
+      default: 'no'
+      private: no
 
-- name: purge fs2es systemd service
-  ansible.builtin.shell: rm -rf /etc/systemd/system/fs2es-indexer.service
+  tasks:
+   - name: exit playbook, if user did not mean to purge cluster
+    fail:
+      msg: >
+        "Exiting purge-samba playbook, cluster was NOT purged.
+         To purge the cluster, either say 'yes' on the prompt or
+         or use `-e ireallymeanit=yes` on the command line when
+         invoking the playbook"
+    when: ireallymeanit != 'yes'
 
-- name: stop elasticsearch systemd
-  ansible.builtin.systemd:
-    name: elasticsearch.service
-    state: stopped
+- name: purge fs2es
+  hosts: 
+    - indexers
+  
+  tasks:
+  - name: stop fs2es systemd service
+    ansible.builtin.systemd:
+      name: fs2es-indexer.service
+      state: stopped
+
+  - name: purge fs2es config directory
+    ansible.builtin.shell: rm -rf /etc/fs2es-indexer
+
+  - name: purge fs2es systemd service
+    ansible.builtin.shell: rm -rf /etc/systemd/system/fs2es-indexer.service
 
 - name: purge elasticsearch
-  dnf:
-    name: elasticsearch
-    state: absent
-    enablerepo: elasticsearch
+  hosts:
+    - indexers
+  tasks:    
+  - name: stop elasticsearch systemd
+    ansible.builtin.systemd:
+      name: elasticsearch.service
+      state: stopped
 
-- name: remove elasticsearch gpg key
-  ansible.builtin.rpm_key:
-    state: absent
-    key: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+  - name: purge elasticsearch
+    dnf:
+      name: elasticsearch
+      state: absent
+      enablerepo: elasticsearch
 
-- name: remove elasticsearch reoi
-  yum_repository:
-    name: elasticsearch
-    state: absent
+  - name: remove elasticsearch gpg key
+    ansible.builtin.rpm_key:
+      state: absent
+      key: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+
+  - name: remove elasticsearch repo
+    yum_repository:
+      name: elasticsearch
+      state: absent
