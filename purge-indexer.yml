@@ -1,7 +1,31 @@
-- name: stop fs2es systemd
+- name: stop fs2es systemd service
+  ansible.builtin.systemd:
+    name: fs2es-indexer.service
+    state: stopped
 
-- name: purge fs2es 
+- name: purge fs2es config directory
+  ansible.builtin.shell: rm -rf /etc/fs2es-indexer
+
+- name: purge fs2es systemd service
+  ansible.builtin.shell: rm -rf /etc/systemd/system/fs2es-indexer.service
 
 - name: stop elasticsearch systemd
+  ansible.builtin.systemd:
+    name: elasticsearch.service
+    state: stopped
 
 - name: purge elasticsearch
+  dnf:
+    name: elasticsearch
+    state: absent
+    enablerepo: elasticsearch
+
+- name: remove elasticsearch gpg key
+  ansible.builtin.rpm_key:
+    state: absent
+    key: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+
+- name: remove elasticsearch reoi
+  yum_repository:
+    name: elasticsearch
+    state: absent

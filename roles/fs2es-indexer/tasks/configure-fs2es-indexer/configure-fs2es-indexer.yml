@@ -7,7 +7,7 @@
   template:
     src: config.yml.j2
     dest: /etc/fs2es-indexer/config.yml
-    owner: "root"
+    owner: root
   notify: service handler
 
 - name: configure systemd service
