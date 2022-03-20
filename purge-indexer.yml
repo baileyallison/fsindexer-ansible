@@ -1,6 +1,6 @@
 ---
 
-  - name: confirm whether user really meant to purge the cluster
+- name: confirm whether user really meant to purge the cluster
   hosts: localhost
   gather_facts: false
 
