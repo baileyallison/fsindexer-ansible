@@ -1,0 +1,12 @@
+---
+- name: add shares to indexer
+  hosts:
+    - indexers
+
+  tasks:
+  - name: loop through shares
+    ansible.builtin.lineinfile:
+      path: /etc/fs2es-indexer/config.yml
+      insertafter: 'directories:'
+      line: '  - "{{ item }}"'
+    with_items: "{{ samba_shares }}"
