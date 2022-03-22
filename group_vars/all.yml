@@ -7,8 +7,8 @@ samba_shares:
 url: http://localhost:9200
 index: files
 bulk_size: 10000
-#elasticsearch-username: fs2es-indexer
-#elasticsearch-password: p@ssw0rd
+#elasticsearch_username: fs2es-indexer
+#elasticsearch_password: p@ssw0rd
 
 #### fs2es-indexer wait time between indexing
 # The wait time between indexing runs

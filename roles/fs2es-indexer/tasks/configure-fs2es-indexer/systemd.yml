@@ -1,0 +1,8 @@
+- name: configure systemd service
+  template:
+    src: fs2es-indexer.service.j2
+    dest: "/etc/systemd/system/fs2es-indexer.service"
+    owner: root
+    group: root
+    mode: 0644
+  notify: service handler

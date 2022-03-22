@@ -3,7 +3,7 @@
     state: present
     key: https://artifacts.elastic.co/GPG-KEY-elasticsearch
 
-- name: configure yum repository
+- name: configure dnf repository
   yum_repository:
     name: elasticsearch
     description: Elasticsearch repository for 7.x packages
