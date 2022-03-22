@@ -6,3 +6,6 @@
     group: root
     mode: 0644
   notify: service handler
+
+- name: flush handlers
+  meta: flush_handlers
