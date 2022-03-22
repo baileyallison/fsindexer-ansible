@@ -32,10 +32,14 @@
       state: stopped
 
   - name: purge fs2es config directory
-    ansible.builtin.shell: rm -rf /etc/fs2es-indexer
+    ansible.builtin.file: 
+      path: /etc/fs2es-indexer
+      state: absent
 
   - name: purge fs2es systemd service
-    ansible.builtin.shell: rm -rf /etc/systemd/system/fs2es-indexer.service
+    ansible.builtin.file: 
+      path: /etc/systemd/system/fs2es-indexer.service
+      state: absent
 
 - name: purge elasticsearch
   hosts:

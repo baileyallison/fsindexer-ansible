@@ -10,22 +10,8 @@
     owner: root
   notify: service handler
 
-- name: configure systemd service
-  template:
-    src: fs2es-indexer.service.j2
-    dest: "/etc/systemd/system/fs2es-indexer.service"
-    owner: root
-    group: root
-    mode: 0644
-  notify: service handler
-
-- name: enable systemd service
+- name: enable and start systemd service
   ansible.builtin.systemd:
     name: fs2es-indexer.service
     enabled: yes
-    state: started
-
-- name: start systemd service
-  ansible.builtin.systemd:
-    name: fs2es-indexer.service
     state: started

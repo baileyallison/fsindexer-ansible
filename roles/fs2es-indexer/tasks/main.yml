@@ -1,3 +1,5 @@
 - include: install-fs2es-indexer/install-fs2es-indexer.yml
 
 - include: configure-fs2es-indexer/configure-fs2es-indexer.yml
+
+- include: configure-fs2es-indexer/configure-systemd.yml
