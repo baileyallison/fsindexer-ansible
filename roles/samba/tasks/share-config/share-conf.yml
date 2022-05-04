@@ -1,0 +1,2 @@
+- name: configure per share settings in smb conf
+    command: /usr/bin/net conf setparm {% for share in samba_shares %}{{ share }}{% endfor %} "spotlight" "yes"

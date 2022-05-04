@@ -1,8 +1,0 @@
-- name: configure smb conf 
-    command: "/usr/bin/net conf setparm global "spotlight backend" "elasticsearch"
-
-- name: configure smb conf
-    command: "/usr/bin/net conf setparm global "elasticsearch:address" "localhost"
-
-- name: configure smb conf
-    command: "/usr/bin/net conf setparm global "elasticsearch:port" "9200"

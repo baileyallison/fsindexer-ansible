@@ -4,8 +4,8 @@
     chdir: /etc/fs2es-indexer/
 
 - name: gather facts for shares
-  command: /usr/bin/net conf showshare "{{ samba_shares }}" | grep path | awk '{print $3}'
-  register: share_names
+  shell: /usr/bin/net conf showshare {% for share in samba_shares %}{{ share }}{% endfor %} | grep path | awk '{print $3}'
+  register: share_names.stdout
 
 - name: write config file
   template:

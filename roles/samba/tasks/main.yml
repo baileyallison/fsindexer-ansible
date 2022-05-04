@@ -4,6 +4,6 @@
 
 - name: restart samba service
   ansible.builtin.systemd:
-    name: smb.service
+    name: smb
     state: restarted
-    when: restart_smb == true
+  when: restart_smb == true

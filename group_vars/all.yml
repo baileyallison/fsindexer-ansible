@@ -2,7 +2,7 @@
 samba_shares:
     - Share_Name
     - Share_Name
-    
+
 restart_smb: true
 
 #### fs2es-indexer settings for elasticsearch

@@ -1,2 +1,0 @@
-- name: configure smb conf
-    command: "/usr/bin/net conf setparm {{share}} "spotlight" "yes"

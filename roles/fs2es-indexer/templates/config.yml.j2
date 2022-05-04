@@ -1,7 +1,7 @@
 #####Samba shares to be indexed
 
 directories:
-{% for share in share_names %}
+{% for share in share_names.stdout_lines %}
   - "{{ share }}"
 {% endfor %}
 
