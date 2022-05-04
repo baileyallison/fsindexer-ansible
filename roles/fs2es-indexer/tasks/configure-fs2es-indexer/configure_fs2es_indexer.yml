@@ -3,6 +3,10 @@
   args:
     chdir: /etc/fs2es-indexer/
 
+ - name: gather facts for shares
+    command: "/usr/bin/net conf showshare {{share}} | grep path | awk '{print$ 2}'"
+    register: share_names
+
 - name: write config file
   template:
     src: config.yml.j2
