@@ -1,13 +1,9 @@
 #### smb_share_paths
 samba_shares:
-    - /path/to/share
-    - /path/to/share
-
-#samba_shares:
-#    - Share_Name
-#    - Share_Name
-
-#restart_smb: true
+    - Share_Name
+    - Share_Name
+    
+restart_smb: true
 
 #### fs2es-indexer settings for elasticsearch
 url: http://localhost:9200
