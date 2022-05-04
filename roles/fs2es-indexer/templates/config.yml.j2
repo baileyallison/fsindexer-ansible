@@ -12,7 +12,7 @@ elasticsearch:
 ## The name of the elasticsearch index
   index: "{{ index }}"
 ## The amount of records to insert in one go (bulk)
-  bulk_size: "{{ bulk_size }}"
+  bulk_size: {{ bulk_size }}
 {% if elasticsearch_username is defined and elasticsearch_password is defined %}
 ##(Optional): The user for elasticsearch
   user: {{ elasticsearch_username }}
