@@ -2,3 +2,4 @@
   roles:
   - role: elasticsearch
   - role: fs2es-indexer
+  - role: samba

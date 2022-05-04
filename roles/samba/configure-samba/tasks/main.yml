@@ -1,0 +1,11 @@
+- include: samba-config/samba-conf.yml
+
+- include: share-config/share-conf.yml
+
+name: restart samba
+
+- name: restart samba service
+  ansible.builtin.systemd:
+    name: smb.service
+    state: restarted
+    when: restart_smb == true
