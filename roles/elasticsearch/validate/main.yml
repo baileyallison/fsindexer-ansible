@@ -1,0 +1,5 @@
+---
+- name: fail if elasticsearch_address is not defined
+  fail:
+    msg: "elasticsearch address must be defined"
+  when: elasticsearch_address is not defined

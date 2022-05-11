@@ -1,5 +1,12 @@
-- include: configure-repo/configure-repo.yml
+---
+- name: include validate tasks
+  include: validate/main.yml
 
-- include: install-elasticsearch/elasticsearch-install.yml
+- name: include configure repo tasks
+  include: configure-repo/configure-repo.yml
 
-- include: configure-elasticsearch/elasticsearch-systemd.yml
+- name: include install tasks
+  include: install-elasticsearch/elasticsearch-install.yml
+
+- name: include configure elasticsearch tasks
+  include: configure-elasticsearch/main.yml

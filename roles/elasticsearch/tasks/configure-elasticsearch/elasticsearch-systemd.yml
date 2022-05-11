@@ -4,7 +4,22 @@
     enabled: yes
     daemon_reload: yes
 
-- name: start systemd service
+- name: restart systemd service
   ansible.builtin.systemd:
     name: elasticsearch.service
-    state: started
+    state: restarted
+
+- name: enable and start systemd service
+  ansible.builtin.systemd:
+    name: elasticsearch.service
+    enabled: yes
+    state: restarted
+
+- name: configure firewall
+  when: manage_firewall | bool
+    firewalld:
+      service: elasticsearch
+      zone: "{{ elasticsearch_firewall_zone }}"
+      permanent: true
+      immediate: true
+      state: enabled

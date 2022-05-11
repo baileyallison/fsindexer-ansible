@@ -1,0 +1,4 @@
+---
+- include: elasticsearch_conf.yml
+
+- include: elasticsearch-systemd.yml
