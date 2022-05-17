@@ -1,3 +1,5 @@
+- include: validate/main.yml
+
 - include: samba-config/samba-conf.yml
 
 - include: share-config/share-conf.yml

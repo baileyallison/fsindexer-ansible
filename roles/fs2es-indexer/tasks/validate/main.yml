@@ -1,0 +1,11 @@
+---
+- name: fail if url is not defined
+  fail:
+    msg: "url must be defined"
+  when: url is not defined
+
+- name: fail if index is not defined
+  fail:
+    msg: "index must be defined"
+  when: index is not defined
+  

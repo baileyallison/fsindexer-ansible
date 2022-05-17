@@ -6,6 +6,7 @@
 - name: gather facts for shares
   shell: /usr/bin/net conf showshare {% for share in samba_shares %}{{ share }}{% endfor %} | grep path | awk '{print $3}'
   register: share_names.stdout
+  loop: samba_shares
 
 - name: write config file
   template:

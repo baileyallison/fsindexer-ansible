@@ -1,0 +1,5 @@
+---
+- name: fail if samba_shares is not defined
+  fail:
+    msg: "samba share must be defined"
+  when: samba_shares is not defined
