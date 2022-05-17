@@ -17,9 +17,9 @@
 
 - name: configure firewall
   when: manage_firewall | bool
-    firewalld:
-      service: elasticsearch
-      zone: "{{ elasticsearch_firewall_zone }}"
-      permanent: true
-      immediate: true
-      state: enabled
+  firewalld:
+    service: elasticsearch
+    zone: "{{ elasticsearch_firewall_zone }}"
+    permanent: true
+    immediate: true
+    state: enabled

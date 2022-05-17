@@ -13,13 +13,11 @@ elasticsearch_firewall_zone: public
 elasticsearch_address: 192.168.1.1
 
 #### fs2es-indexer settings
-url: http://192.168.1.1:9200
+#url: http://192.168.1.1:9200
 index: files
 bulk_size: 10000
 #elasticsearch_username: fs2es-indexer
 #elasticsearch_password: p@ssw0rd
-
-#elasticsearch_protocol: http
 
 #### fs2es-indexer wait time between indexing
 # The wait time between indexing runs
